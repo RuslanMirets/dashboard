@@ -1,8 +1,15 @@
 import { FC } from 'react';
 import styles from './Header.module.scss';
+import Logo from './Logo';
+import AuthForm from './auth-form/AuthForm';
 
 const Header: FC = () => {
-	return <header>Header</header>;
+	return (
+		<header className={styles.header}>
+			<Logo />
+			<AuthForm />
+		</header>
+	);
 };
 
 export default Header;

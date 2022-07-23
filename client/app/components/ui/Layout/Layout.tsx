@@ -1,6 +1,7 @@
 import { FC, PropsWithChildren } from 'react';
 import Meta from '@/utils/meta/Meta';
 import { IMeta } from '@/utils/meta/meta.interface';
+import styles from './Layout.module.scss';
 import Header from './header/Header';
 
 const Layout: FC<PropsWithChildren<IMeta>> = ({ children, ...meta }) => {
@@ -9,7 +10,7 @@ const Layout: FC<PropsWithChildren<IMeta>> = ({ children, ...meta }) => {
 			<Meta {...meta} />
 			<div>
 				<Header />
-				<main>{children}</main>
+				<main className={styles.main}>{children}</main>
 			</div>
 		</>
 	);
