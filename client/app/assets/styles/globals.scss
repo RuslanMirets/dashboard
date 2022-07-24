@@ -29,3 +29,9 @@ input {
 button {
 	@apply cursor-pointer;
 }
+
+img {
+	width: 100%;
+	max-width: 100%;
+	object-fit: cover;
+}

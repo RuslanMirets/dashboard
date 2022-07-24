@@ -18,6 +18,7 @@
 }
 
 .error {
-	@apply absolute -bottom-4 left-0 w-full text-primary;
+	@apply absolute left-0 w-full text-primary;
 	font-size: 0.75rem;
+	bottom: -24px;
 }

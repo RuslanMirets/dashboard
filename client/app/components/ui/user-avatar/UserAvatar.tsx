@@ -3,16 +3,20 @@ import Link from 'next/link';
 import { FC } from 'react';
 import styles from './UserAvatar.module.scss';
 
-const UserAvatar: FC<{ avatarPath: string }> = ({ avatarPath }) => {
+const UserAvatar: FC<{ avatarPath: string; link: string; title?: string }> = ({
+	avatarPath,
+	link,
+	title,
+}) => {
 	return (
-		<Link href='/dashboard'>
-			<a>
+		<Link href={link}>
+			<a title={title}>
 				<Image
 					className={styles.avatar}
 					src={avatarPath}
 					alt=''
-					width={40}
-					height={40}
+					width={46}
+					height={46}
 				/>
 			</a>
 		</Link>

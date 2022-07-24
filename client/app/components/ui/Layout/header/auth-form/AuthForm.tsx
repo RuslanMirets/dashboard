@@ -7,7 +7,7 @@ import Field from '@/components/ui/Field/Field';
 import UserAvatar from '@/components/ui/user-avatar/UserAvatar';
 import { useAuth } from '@/hooks/useAuth';
 import { useOutside } from '@/hooks/useOutside';
-import { FADE_IN, menuAnimation } from '@/utils/animations/fade';
+import { menuAnimation } from '@/utils/animations/fade';
 import styles from './AuthForm.module.scss';
 import { IAuthFields } from './auth-form.interface';
 import { validEmail } from './auth.constants';
@@ -21,6 +21,7 @@ const AuthForm: FC = () => {
 		register,
 		formState: { errors },
 		handleSubmit,
+		reset,
 	} = useForm<IAuthFields>({ mode: 'onChange' });
 
 	const { user, setUser } = useAuth();
@@ -31,15 +32,22 @@ const AuthForm: FC = () => {
 				id: 123,
 				name: 'Cillian Murphy',
 				email: 'email@emai.ry',
-				avatarPath: '/avatar.png',
+				avatarPath: '/avatar.jpg',
 			});
 		// else if (type === 'register') console.log(data);
+
+		reset();
+		setIsShow(false);
 	};
 
 	return (
 		<div className={styles.wrapper} ref={ref}>
 			{user ? (
-				<UserAvatar avatarPath={user.avatarPath || ''} />
+				<UserAvatar
+					link='/dashboard'
+					avatarPath={user.avatarPath || ''}
+					title='Перейти в dashboard'
+				/>
 			) : (
 				<button className={styles.button} onClick={() => setIsShow(!isShow)}>
 					<FaRegUserCircle />
