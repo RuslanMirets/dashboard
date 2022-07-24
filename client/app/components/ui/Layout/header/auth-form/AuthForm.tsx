@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion';
 import { FC, useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { FaRegUserCircle } from 'react-icons/fa';
@@ -6,6 +7,7 @@ import Field from '@/components/ui/Field/Field';
 import UserAvatar from '@/components/ui/user-avatar/UserAvatar';
 import { useAuth } from '@/hooks/useAuth';
 import { useOutside } from '@/hooks/useOutside';
+import { FADE_IN, menuAnimation } from '@/utils/animations/fade';
 import styles from './AuthForm.module.scss';
 import { IAuthFields } from './auth-form.interface';
 import { validEmail } from './auth.constants';
@@ -43,7 +45,7 @@ const AuthForm: FC = () => {
 					<FaRegUserCircle />
 				</button>
 			)}
-			{isShow && (
+			<motion.div animate={isShow ? 'open' : 'closed'} variants={menuAnimation}>
 				<form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
 					<Field
 						{...register('email', {
@@ -68,7 +70,7 @@ const AuthForm: FC = () => {
 						error={errors.password}
 						type='password'
 					/>
-					<div className='mt-5 mb-1 text-center'>
+					<div className={styles.loginButton}>
 						<Button onClick={() => setType('login')}>Login</Button>
 					</div>
 					<button
@@ -78,7 +80,7 @@ const AuthForm: FC = () => {
 						Register
 					</button>
 				</form>
-			)}
+			</motion.div>
 		</div>
 	);
 };

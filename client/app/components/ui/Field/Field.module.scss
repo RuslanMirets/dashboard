@@ -1,18 +1,23 @@
-$gray: #797979;
+@import '../../../assets/styles/mixins.scss';
 
 .input {
-	@apply relative block mb-4 bg-white;
+	@apply relative block mb-5;
+	@include shadow();
 
 	> input {
-		@apply pb-2 w-full text-base;
+		@apply block p-2 w-full text-base rounded-md bg-white;
 
 		&::placeholder {
-			color: $gray;
+			@apply text-gray-400;
+		}
+
+		&:focus-visible {
+			@apply border-primary outline-none;
 		}
 	}
 }
 
 .error {
-	@apply absolute -bottom-5 left-0 w-full text-primary;
+	@apply absolute -bottom-4 left-0 w-full text-primary;
 	font-size: 0.75rem;
 }
