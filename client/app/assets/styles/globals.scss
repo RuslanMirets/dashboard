@@ -19,3 +19,12 @@ a {
 * {
 	box-sizing: border-box;
 }
+
+button,
+input {
+	@apply border-none outline-0;
+}
+
+button {
+	@apply cursor-pointer;
+}
