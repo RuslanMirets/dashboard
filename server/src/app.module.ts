@@ -4,7 +4,7 @@ import { SequelizeModule } from '@nestjs/sequelize';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { getSequelizeConfig } from './config/sequelize.config';
-import { UserModule } from './user/user.module';
+import { UserModule } from './auth/auth.module';
 import { MovieModule } from './movie/movie.module';
 import { ReviewModule } from './review/review.module';
 import { ViewsModule } from './views/views.module';

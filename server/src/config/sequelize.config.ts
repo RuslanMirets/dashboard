@@ -12,4 +12,5 @@ export const getSequelizeConfig = async (
 	password: configService.get('DB_PASSWORD'),
 	autoLoadModels: true,
 	synchronize: true,
+	logging: false,
 });

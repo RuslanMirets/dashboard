@@ -6,14 +6,14 @@ import {
 	Table,
 } from 'sequelize-typescript';
 import { MovieModel } from 'src/movie/movie.model';
-import { UserModel } from 'src/user/user.model';
+import { UserModel } from 'src/auth/user.model';
 
 @Table({
 	tableName: 'Review',
 	createdAt: 'created_at',
 	updatedAt: 'updated_at',
 })
-export class ReviewModel extends Model {
+export class ReviewModel extends Model<ReviewModel> {
 	@Column({ defaultValue: '' })
 	description: string;
 
