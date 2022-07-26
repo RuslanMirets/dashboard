@@ -1,3 +1,5 @@
+import { UserModel } from 'src/auth/user.model';
+import { ReviewModel } from 'src/review/review.model';
 import { MovieDto } from './movie.dto';
 import { MovieModel } from 'src/movie/movie.model';
 import { Injectable, NotFoundException } from '@nestjs/common';
@@ -13,7 +15,10 @@ export class MovieService {
 	async findOneById(id: number) {
 		const movie = await this.movieModel.findOne({
 			where: { id },
-			include: { all: true },
+			include: {
+				model: ReviewModel,
+				include: [UserModel],
+			},
 		});
 		if (!movie) throw new NotFoundException('Movie not found');
 
@@ -28,7 +33,7 @@ export class MovieService {
 
 		return this.movieModel.findAll({
 			where: { ...options },
-			order: [['createdAt', 'desc']],
+			order: [['created_at', 'desc']],
 			include: { all: true },
 		});
 	}
@@ -46,6 +51,4 @@ export class MovieService {
 	async delete(id: number) {
 		return await this.movieModel.destroy({ where: { id } });
 	}
-
-	// async updateCountViews() {}
 }
