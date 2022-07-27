@@ -1,3 +1,4 @@
+import { useMutation } from '@tanstack/react-query';
 import { motion } from 'framer-motion';
 import { FC, useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
@@ -7,6 +8,7 @@ import Field from '@/components/ui/Field/Field';
 import UserAvatar from '@/components/ui/user-avatar/UserAvatar';
 import { useAuth } from '@/hooks/useAuth';
 import { useOutside } from '@/hooks/useOutside';
+import { AuthService } from '@/services/auth/auth.service';
 import { menuAnimation } from '@/utils/animations/fade';
 import styles from './AuthForm.module.scss';
 import { IAuthFields } from './auth-form.interface';
@@ -26,18 +28,33 @@ const AuthForm: FC = () => {
 
 	const { user, setUser } = useAuth();
 
-	const onSubmit: SubmitHandler<IAuthFields> = (data) => {
-		if (type === 'login')
-			setUser({
-				id: 123,
-				name: 'Cillian Murphy',
-				email: 'email@emai.ry',
-				avatarPath: '/avatar.jpg',
-			});
-		// else if (type === 'register') console.log(data);
+	const { mutate: loginAsync } = useMutation(
+		['login'],
+		(data: IAuthFields) => AuthService.login(data.email, data.password),
+		{
+			onSuccess(data) {
+				if (setUser) setUser(data.user);
+				reset();
+				setIsShow(false);
+			},
+		},
+	);
 
-		reset();
-		setIsShow(false);
+	const { mutate: registerAsync } = useMutation(
+		['register'],
+		(data: IAuthFields) => AuthService.register(data.email, data.password),
+		{
+			onSuccess(data) {
+				if (setUser) setUser(data.user);
+				reset();
+				setIsShow(false);
+			},
+		},
+	);
+
+	const onSubmit: SubmitHandler<IAuthFields> = (data) => {
+		if (type === 'login') loginAsync(data);
+		else if (type === 'register') registerAsync(data);
 	};
 
 	return (
@@ -53,7 +70,11 @@ const AuthForm: FC = () => {
 					<FaRegUserCircle />
 				</button>
 			)}
-			<motion.div animate={isShow ? 'open' : 'closed'} variants={menuAnimation}>
+			<motion.div
+				initial={false}
+				animate={isShow ? 'open' : 'closed'}
+				variants={menuAnimation}
+			>
 				<form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
 					<Field
 						{...register('email', {
