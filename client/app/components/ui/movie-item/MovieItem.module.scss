@@ -1,0 +1,14 @@
+.item {
+	@apply relative;
+	width: 24%;
+
+	.rating {
+		@apply absolute -left-1.5 top-1.5 bg-green-600 text-white rounded-md p-1 text-center;
+	}
+	.poster {
+		@apply rounded-lg overflow-hidden;
+	}
+	.heading {
+		@apply text-black mt-2;
+	}
+}
