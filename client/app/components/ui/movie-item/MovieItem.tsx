@@ -7,22 +7,20 @@ import styles from './MovieItem.module.scss';
 const MovieItem: FC<{ movie: IMovie }> = ({ movie }) => {
 	return (
 		<Link href={`/movie/${movie.id}`}>
-			<a>
-				<div className={styles.item}>
-					{movie.rating && (
-						<div className={styles.rating}>{movie.rating.toFixed(1)}</div>
-					)}
-					<div className={styles.poster}>
-						<Image
-							src={movie.poster}
-							alt={movie.name}
-							width={220}
-							height={330}
-							layout='responsive'
-						/>
-					</div>
-					<div className={styles.heading}>{movie.name}</div>
+			<a className={styles.item}>
+				{movie.rating && (
+					<div className={styles.rating}>{movie.rating.toFixed(1)}</div>
+				)}
+				<div className={styles.poster}>
+					<Image
+						src={movie.poster}
+						alt={movie.name}
+						width={220}
+						height={330}
+						layout='responsive'
+					/>
 				</div>
+				<div className={styles.heading}>{movie.name}</div>
 			</a>
 		</Link>
 	);

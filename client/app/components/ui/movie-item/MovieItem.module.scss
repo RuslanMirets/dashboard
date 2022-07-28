@@ -1,14 +1,20 @@
 .item {
-	@apply relative;
-	width: 24%;
+	@apply block relative;
+	width: 14%;
 
 	.rating {
-		@apply absolute -left-1.5 top-1.5 bg-green-600 text-white rounded-md p-1 text-center;
+		@apply absolute -left-2.5 top-2 bg-green-600 text-white rounded-md px-4 text-center z-10 text-sm;
 	}
 	.poster {
 		@apply rounded-lg overflow-hidden;
 	}
 	.heading {
-		@apply text-black mt-2;
+		@apply text-black mt-2 font-medium transition-colors;
+	}
+
+	&:hover {
+		.heading {
+			@apply text-primary;
+		}
 	}
 }

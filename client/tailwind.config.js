@@ -22,9 +22,9 @@ module.exports = {
 			'7xl': '5.8rem',
 		},
 		extend: {
-			colors: { primary: '#5f3df7', black: '#111111' },
-			transitionTimingFunction: { DEFAULT: 'ease-in-out' },
-			transitionDuration: { DEFAULT: '350ms' },
+			colors: { primary: '#5f3df7', black: '#222222' },
+			transitionTimingFunction: { DEFAULT: 'ease' },
+			transitionDuration: { DEFAULT: '250ms' },
 		},
 	},
 	plugins: [
