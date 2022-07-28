@@ -8,6 +8,7 @@ import { UserModule } from './auth/auth.module';
 import { MovieModule } from './movie/movie.module';
 import { ReviewModule } from './review/review.module';
 import { ViewsModule } from './views/views.module';
+import { MediaModule } from './media/media.module';
 
 @Module({
 	imports: [
@@ -21,6 +22,7 @@ import { ViewsModule } from './views/views.module';
 		MovieModule,
 		ReviewModule,
 		ViewsModule,
+		MediaModule,
 	],
 	controllers: [AppController],
 	providers: [AppService],
