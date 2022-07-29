@@ -5,12 +5,10 @@ import { MdSend } from 'react-icons/md';
 import Field from '@/components/ui/Field/Field';
 import { IReviewDto } from '@/shared/interfaces/review.interface';
 import { ReviewService } from '@/services/review.service';
+import { queryClient } from '../../../../../../pages/_app';
 import styles from './AddReviewForm.module.scss';
 
-const AddReviewForm: FC<{ movieId: number; refetch: any }> = ({
-	movieId,
-	refetch,
-}) => {
+const AddReviewForm: FC<{ movieId: number }> = ({ movieId }) => {
 	const {
 		register,
 		formState: { errors },
@@ -22,9 +20,9 @@ const AddReviewForm: FC<{ movieId: number; refetch: any }> = ({
 		['add review'],
 		(data: IReviewDto) => ReviewService.create({ ...data, movieId }),
 		{
-			onSuccess() {
+			async onSuccess() {
 				reset();
-				refetch();
+				await queryClient.invalidateQueries(['get movie', movieId]);
 			},
 		},
 	);

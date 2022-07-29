@@ -2,13 +2,13 @@
 
 .input {
 	@apply relative block mb-5;
-	@include shadow();
 
 	> input {
-		@apply block p-2 w-full text-base rounded-md bg-white;
+		@apply block p-2 w-full text-xs rounded-md bg-white;
+		@include shadow();
 
 		&::placeholder {
-			@apply text-gray-400;
+			@apply text-gray-400 font-light;
 		}
 
 		&:focus-visible {

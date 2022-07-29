@@ -11,39 +11,44 @@ const Movie: FC = () => {
 	const { query } = useRouter();
 	const movieId = Number(query?.id);
 
-	const { refetch, data: movie } = useQuery(
+	const { data: movie, isLoading } = useQuery(
 		['get movie', movieId],
 		() => MovieService.getOneById(movieId),
-		{ select: ({ data }) => data },
+		{ enabled: !!movieId, select: ({ data }) => data },
 	);
 
 	return (
 		<Layout title={`${movie?.name} - RED Cinema`}>
 			<div className={styles.wrapper}>
 				<div className={styles.poster}>
-					<Image
-						className={styles.images}
-						src={movie?.poster || ''}
-						alt={movie?.name}
-						width={220}
-						height={330}
-						layout='responsive'
-					/>
-					<div className={styles.rating}>{movie?.rating}</div>
+					{movie?.poster && (
+						<Image
+							className={styles.image}
+							src={movie?.poster || ''}
+							alt={movie?.name}
+							width={220}
+							height={330}
+							layout='responsive'
+						/>
+					)}
 				</div>
 				<div className={styles.detail}>
 					<h1 className={styles.heading}>{movie?.name}</h1>
-					<div className={styles.title}>
-						<ul>
-							<li>
-								<span>Сборы в мире</span>
-								<span>${movie?.fees.toLocaleString()}</span>
-							</li>
-						</ul>
-					</div>
+					<div className={styles.rating}>{movie?.rating?.toFixed(1)}</div>
+					<div className={styles.title}>About movie</div>
+					<ul>
+						<li>
+							<span>Fees in the world</span>
+							<span>${movie?.fees.toLocaleString()}</span>
+						</li>
+					</ul>
+					<Reviews
+						movieId={movieId}
+						reviews={movie?.reviews || []}
+						isLoading={isLoading}
+					/>
 				</div>
 			</div>
-			<Reviews movieId={movieId} />
 		</Layout>
 	);
 };

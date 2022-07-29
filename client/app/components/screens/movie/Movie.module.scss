@@ -1,4 +1,34 @@
 .wrapper {
+	@apply grid w-2/3 gap-8;
+	grid-template-columns: 1fr 4fr;
+
 	.poster {
+		.image {
+			@apply rounded-lg;
+		}
+	}
+
+	.detail {
+		.heading {
+			@apply text-3xl font-bold mb-1;
+		}
+
+		.rating {
+			@apply font-bold text-3xl text-green-600 mb-4;
+		}
+
+		.title {
+			@apply mb-1.5 font-medium;
+		}
+
+		> ul {
+			> li {
+				@apply block mb-2 text-sm;
+
+				> span:first-child {
+					@apply font-light w-24 mr-3;
+				}
+			}
+		}
 	}
 }

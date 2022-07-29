@@ -3,7 +3,7 @@ import type { AppProps } from 'next/app';
 import AuthProvider from '@/providers/auth-provider/AuthProvider';
 import '@/assets/styles/globals.scss';
 
-const queryClient = new QueryClient({
+export const queryClient = new QueryClient({
 	defaultOptions: { queries: { refetchOnWindowFocus: false } },
 });
 
