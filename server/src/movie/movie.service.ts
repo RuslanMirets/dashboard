@@ -28,8 +28,7 @@ export class MovieService {
 	async findAll(searchTerm?: string) {
 		let options: WhereOptions<MovieModel> = {};
 
-		if (searchTerm)
-			options = { [Op.or]: [{ name: { like: `%${searchTerm}%` } }] };
+		if (searchTerm) options = { name: { [Op.like]: `%${searchTerm}%` } };
 
 		return this.movieModel.findAll({
 			where: { ...options },
