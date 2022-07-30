@@ -1,9 +1,10 @@
-import { useQuery } from '@tanstack/react-query';
+import { useMutation, useQuery } from '@tanstack/react-query';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
-import { FC } from 'react';
+import { FC, useEffect } from 'react';
 import Layout from '@/components/ui/Layout/Layout';
 import { MovieService } from '@/services/movie.service';
+import { ViewsService } from '@/services/views.service';
 import styles from './Movie.module.scss';
 import Reviews from './reviews/Reviews';
 
@@ -16,6 +17,15 @@ const Movie: FC = () => {
 		() => MovieService.getOneById(movieId),
 		{ enabled: !!movieId, select: ({ data }) => data },
 	);
+
+	const { mutate } = useMutation(['update count opened'], () =>
+		ViewsService.updateViews(movieId),
+	);
+
+	useEffect(() => {
+		if (movieId) mutate();
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [movieId]);
 
 	return (
 		<Layout title={`${movie?.name} - RED Cinema`}>
