@@ -1,5 +1,5 @@
 import { TextareaHTMLAttributes } from 'react';
-import { IFieldProps } from '../Field/field.interface';
+import { IFieldProps } from '../field/field.interface';
 
 type TypeInputPropsField = TextareaHTMLAttributes<HTMLTextAreaElement> &
 	IFieldProps;

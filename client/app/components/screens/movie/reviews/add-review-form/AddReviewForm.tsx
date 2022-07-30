@@ -2,7 +2,7 @@ import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { FC } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { MdSend } from 'react-icons/md';
-import Field from '@/components/ui/Field/Field';
+import Field from '@/components/ui/field/Field';
 import { IReviewDto } from '@/shared/interfaces/review.interface';
 import { ReviewService } from '@/services/review.service';
 import styles from './AddReviewForm.module.scss';

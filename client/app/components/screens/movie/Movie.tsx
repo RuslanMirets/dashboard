@@ -2,7 +2,7 @@ import { useMutation, useQuery } from '@tanstack/react-query';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { FC, useEffect } from 'react';
-import Layout from '@/components/ui/Layout/Layout';
+import Layout from '@/components/ui/layout/Layout';
 import { MovieService } from '@/services/movie.service';
 import { ViewsService } from '@/services/views.service';
 import styles from './Movie.module.scss';

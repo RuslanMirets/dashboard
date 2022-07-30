@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import Layout from '@/components/ui/Layout/Layout';
+import Layout from '@/components/ui/layout/Layout';
 import MovieItem from '@/components/ui/movie-item/MovieItem';
 import styles from './Home.module.scss';
 import { IHome } from './home.interface';

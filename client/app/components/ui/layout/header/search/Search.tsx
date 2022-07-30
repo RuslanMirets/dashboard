@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { FC } from 'react';
 import { BiSearch } from 'react-icons/bi';
-import Field from '@/components/ui/Field/Field';
+import Field from '@/components/ui/field/Field';
 import MovieItem from '@/components/ui/movie-item/MovieItem';
 import { menuAnimation } from '@/utils/animations/fade';
 import styles from './Search.module.scss';
