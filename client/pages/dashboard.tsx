@@ -1,8 +1,8 @@
 import { NextPage } from 'next';
-import Layout from '@/components/ui/layout/Layout';
+import Dashboard from '@/components/screens/dashboard/main/Dashboard';
 
-const Dashboard: NextPage = () => {
-	return <Layout title='Dashboard'>Dashboard</Layout>;
+const DashboardPage: NextPage = () => {
+	return <Dashboard />;
 };
 
-export default Dashboard;
+export default DashboardPage;
