@@ -15,6 +15,8 @@
 		border-top-left-radius: 2rem;
 		border-bottom-left-radius: 2rem;
 		width: 80px;
+		border-top: 2px solid rgba(255, 255, 255, 0.7);
+		border-bottom: 2px solid rgba(255, 255, 255, 0.5);
 
 		.logo {
 			@apply text-5xl block mb-7;

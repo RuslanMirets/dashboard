@@ -1,0 +1,30 @@
+.item {
+	@apply px-4 py-5 rounded-2xl relative cursor-default;
+	background-color: #f2f7ff;
+	border-top: 2px solid #ffffff;
+	border-left: 2px solid #ffffff;
+
+	&::before {
+		@apply absolute w-full h-full rounded-2xl -bottom-1 left-0 transition-all;
+		content: '';
+		background-color: #b7c5f3;
+		z-index: -1;
+		box-shadow: 0 10px 20px rgba(37, 12, 171, 0.3);
+	}
+
+	&:hover::before {
+		@apply bottom-0;
+	}
+
+	.icon {
+		@apply text-stone-700 mb-2 text-3xl;
+	}
+
+	.name {
+		@apply font-light mb-1.5 opacity-70;
+	}
+
+	.value {
+		@apply text-lg font-medium;
+	}
+}

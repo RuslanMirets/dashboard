@@ -1,11 +1,11 @@
 import { FC } from 'react';
-import Heading from '@/components/ui/heading/Heading';
 import Layout from '@/components/ui/layout/Layout';
+import MainStatistics from './main-statistics/MainStatistics';
 
 const Dashboard: FC = () => {
 	return (
 		<Layout title='Dashboard'>
-			<Heading>Main Statistics</Heading>
+			<MainStatistics />
 		</Layout>
 	);
 };
