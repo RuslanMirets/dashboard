@@ -9,7 +9,12 @@ const MainStatistics: FC = () => {
 			<Heading>Main Statistics</Heading>
 			<div className='grid grid-cols-4 gap-8'>
 				<StatisticItem
-					item={{ name: 'Views', value: 2000000, Icon: AiOutlineEye }}
+					item={{
+						name: 'Views',
+						value: 2000000,
+						Icon: AiOutlineEye,
+						color: 'blue',
+					}}
 				/>
 			</div>
 		</div>

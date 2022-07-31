@@ -1,10 +1,11 @@
+import cn from 'classnames';
 import { FC } from 'react';
 import styles from './StatisticItem.module.scss';
 import { IStatisticItem } from './statistic-item.interface';
 
 const StatisticItem: FC<{ item: IStatisticItem }> = ({ item }) => {
 	return (
-		<div className={styles.item}>
+		<div className={cn(styles.item, styles[item.color])}>
 			<div className={styles.icon}>
 				<item.Icon />
 			</div>
