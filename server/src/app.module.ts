@@ -9,6 +9,7 @@ import { MovieModule } from './movie/movie.module';
 import { ReviewModule } from './review/review.module';
 import { ViewsModule } from './views/views.module';
 import { MediaModule } from './media/media.module';
+import { StatisticsModule } from './statistics/statistics.module';
 
 @Module({
 	imports: [
@@ -23,6 +24,7 @@ import { MediaModule } from './media/media.module';
 		ReviewModule,
 		ViewsModule,
 		MediaModule,
+		StatisticsModule,
 	],
 	controllers: [AppController],
 	providers: [AppService],
