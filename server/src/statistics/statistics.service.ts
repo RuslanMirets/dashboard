@@ -4,6 +4,7 @@ import { col, fn } from 'sequelize';
 import { MovieModel } from 'src/movie/movie.model';
 import { ReviewModel } from 'src/review/review.model';
 import { ViewsModel } from 'src/views/views.model';
+import { IStatisticItem } from './statistics.interface';
 
 @Injectable()
 export class StatisticsService {
@@ -13,7 +14,7 @@ export class StatisticsService {
 		@InjectModel(ViewsModel) private readonly viewsModel: typeof ViewsModel,
 	) {}
 
-	async getMainStatistics() {
+	async getMainStatistics(): Promise<IStatisticItem[]> {
 		const countReviews = await this.reviewModel.count();
 		const countMovies = await this.movieModel.count();
 
@@ -29,7 +30,12 @@ export class StatisticsService {
 			})
 			.then((data) => Number(data[0].rating.toFixed(1)));
 
-		return { countReviews, countMovies, views, averageRating };
+		return [
+			{ id: 1, name: 'Views', value: views },
+			{ id: 2, name: 'Average rating', value: averageRating },
+			{ id: 3, name: 'Movies', value: countMovies },
+			{ id: 4, name: 'Reviews', value: countReviews },
+		];
 	}
 
 	async getMiddleStatistics() {
