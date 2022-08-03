@@ -6,7 +6,7 @@ import styles from './TotalFees.module.scss';
 const TotalFees: FC<{ total: number }> = ({ total }) => {
 	return (
 		<div className={styles.fees}>
-			<ProgressBar percent={75} />
+			<ProgressBar percent={Math.round((total * 100) / 3000000000)} />
 			<div className={styles.icon}>
 				<MdOutlineQueryStats />
 			</div>
