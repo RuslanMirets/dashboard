@@ -4,8 +4,8 @@ import Loader from '@/components/ui/Loader';
 import Heading from '@/components/ui/heading/Heading';
 import { StatisticsService } from '@/services/statistics/statistics.service';
 import styles from './MiddleStatistics.module.scss';
-import TotalFees from './TotalFees';
 import ViewsChart from './ViewsChart';
+import TotalFees from './total-fees/TotalFees';
 
 const MiddleStatistics: FC = () => {
 	const { data, isLoading } = useQuery(['get middle statistics'], () =>
