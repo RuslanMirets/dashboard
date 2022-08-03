@@ -1,5 +1,6 @@
 import { FC } from 'react';
 import { MdOutlineQueryStats } from 'react-icons/md';
+import AnimatedCounter from '@/components/ui/AnimatedCounter';
 import ProgressBar from '@/components/ui/progress-bar/ProgressBar';
 import styles from './TotalFees.module.scss';
 
@@ -11,7 +12,9 @@ const TotalFees: FC<{ total: number }> = ({ total }) => {
 				<MdOutlineQueryStats />
 			</div>
 			<div className={styles.name}>Total fees</div>
-			<div className={styles.total}>${total.toLocaleString('en-EN')}</div>
+			<div className={styles.total}>
+				$<AnimatedCounter to={total} />
+			</div>
 		</div>
 	);
 };
